@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "includePath": [
+        "${workspaceFolder}/build/_deps/raylib-cpp-src/include",
+        "${workspaceFolder}/**"
+      ],
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE",
+        "GRAPHICS_API_OPENGL_21",
+        "PLATFORM_DESKTOP"
+      ],
+      "compilerPath": "C:/raylib/mingw/bin/g++.exe",
+      "cStandard": "c99",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "clang-arm64",
+      "configurationProvider": "ms-vscode.cmake-tools"
+    }
+  ],
+  "version": 4
+}
