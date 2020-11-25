@@ -62,13 +62,31 @@ void Block::TakeInput()
 		Move(Direction::LEFT);
 }
 
-bool Block::isCollided(const Rectangle& a)
+bool Block::isCollided(const Block& other)
 {
-	float dist = Vector2Distance(position, Vector2{ a.x, a.y });
+	float dist = Vector2Distance(position, other.position);
 	if (dist < size)
 		return true;
 	else
 		return false;
+}
+bool Block::isCollided(const Rectangle& rec)
+{
+	float dist = Vector2Distance(position, Vector2{ rec.x, rec.y });
+	if (dist < size)
+		return true;
+	else
+		return false;
+
+}
+
+bool Block::checkWallCollision(const int& width, const int& height)
+{
+	if ((position.x + size > width) || (position.x < size) || (position.y + size > height) || (position.y < size))
+		return true;
+	else
+		return false;
+
 }
 
 void Block::Follow(const Block& parent)

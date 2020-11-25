@@ -8,13 +8,12 @@ enum class Direction {
 
 class Block
 {
-private:
-public:
+protected:
 	Vector2 position;
+private:
 	Vector2 velocity;
 	float size;
 	Direction state;
-	float angle;
 public:
 	Block(Vector2 pos, Vector2 vel, float size);
 	~Block();
@@ -24,6 +23,9 @@ public:
 	void Stop();
 	void TakeInput();
 	void Follow(const Block& parent);
-	bool isCollided(const Rectangle& other);
+	bool isCollided(const Block& other);
+	bool isCollided(const Rectangle& rec);
+	bool checkWallCollision(const int& width, const int& height);
+	friend class Snake;
 };
 

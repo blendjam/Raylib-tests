@@ -3,6 +3,8 @@
 Snake::Snake(Vector2 pos, Vector2 vel, float size)
 {
 	body.push_back(Block(pos, vel, size));
+	for (int i = 0; i < 500; i++)
+		oldPos[i] = Vector2{ 0.0, 0.0 };
 }
 
 Snake::~Snake()
@@ -46,11 +48,18 @@ bool Snake::isCollided(const Rectangle& other)
 {
 	return body[0].isCollided(other);
 }
-bool Snake::checkWallCollision(int width, int height)
+bool Snake::checkWallCollision(const int& width, const int& height)
 {
 	Block head = body[0];
-	if ((head.position.x + head.size > width) || (head.position.x < 0) || (head.position.y + head.size > height) || (head.position.y < 0))
-		return true;
-	else
-		return false;
+	return head.checkWallCollision(width, height);
+}
+
+bool Snake::checkSelfCollision()
+{
+	for (int i = 2; i < body.size(); i++)
+	{
+		if (body[0].isCollided(body[i]))
+			return true;
+	}
+	return false;
 }

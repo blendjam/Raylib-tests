@@ -13,8 +13,9 @@ public:
 	void Draw();
 	void Update();
 	void TakeInput();
-	bool checkWallCollision(int width, int height);
+	bool checkWallCollision(const int& width, const int& height);
 	bool isCollided(const Rectangle& other);
+	bool checkSelfCollision();
 private:
 	Vector2 oldPos[500];
 	std::vector<Block> body;
